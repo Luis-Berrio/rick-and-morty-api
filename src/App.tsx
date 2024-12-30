@@ -3,6 +3,7 @@ import { Character } from './types/character';
 import { CharacterCard } from './components/CharacterCard';
 import { CharacterDialog } from './components/CharacterDialog';
 import { fetchCharacters, fetchFromExternalApi } from './services/api';
+import "./App.css";
 
 export default function App() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -49,13 +50,22 @@ export default function App() {
           <h1 className="text-4xl font-bold bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
             Rick And Morty Characters
           </h1>
-          {/* <button
-            onClick={handleFetchCharacters}
-            disabled={isLoading}
-            className="custom-button bg-gradient-to-r from-pink-400 to-purple-500 text-white py-2 px-6 rounded-lg font-medium transform transition-transform hover:-translate-y-1 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isLoading ? "Updating..." : "Fetch Characters"}
-          </button> */}
+          <div className="flex items-center">
+            <input
+              type="number"
+              min="1"
+              value={characterCount}
+              onChange={(e) => setCharacterCount(Number(e.target.value))}
+              className="custom-input w-20 mr-4 text-center"
+            />
+            <button
+              onClick={handleFetchCharacters}
+              disabled={isLoading}
+              className="custom-button bg-gradient-to-r from-pink-400 to-purple-500 text-white py-2 px-6 rounded-lg font-medium transform transition-transform hover:-translate-y-1 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? 'Updating...' : 'Fetch Characters'}
+            </button>
+          </div>
         </div>
 
         {/* Character Grid */}
@@ -67,7 +77,7 @@ export default function App() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {characters.map(character => (
+            {characters.map((character) => (
               <CharacterCard
                 key={character.id}
                 character={character}

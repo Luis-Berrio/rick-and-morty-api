@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Character } from "../types/Character";
+import { Character } from "../types/character";
 
 const API_URL = "http://localhost:8080/api";
 

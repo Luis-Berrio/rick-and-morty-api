@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Character } from '../types/Character';
+import { Character } from '../types/character';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
